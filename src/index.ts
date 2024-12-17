@@ -8,7 +8,7 @@ function crearVentana(): HTMLDivElement {
     // header
     const header = document.createElement("div");
     header.classList.add("header");
-    header.innerHTML = 'Ventana Flotante <span>x</span>';
+    header.innerHTML = '<span>Ventana Flotante</span> <div class="close-button"><div class="close-icon"></div></div>';
     ventana.appendChild(header);
 
     // contenido
@@ -18,12 +18,12 @@ function crearVentana(): HTMLDivElement {
     ventana.appendChild(contenido);
 
     // Insertar la ventana flotante dentro del canvas
-    canvas.parentElement?.appendChild(ventana);
+    canvas.appendChild(ventana);
 
     // Funcionalidad de cerrar ventana
-    const closeBtn = header.querySelector("span") as HTMLSpanElement;
+    const closeBtn = header.querySelector(".close-button") as HTMLSpanElement;
     closeBtn.onclick = function() {
-        ventana.style.display = "none";
+        ventana.remove();
     };
 
     // Hacer que la ventana sea arrastrable

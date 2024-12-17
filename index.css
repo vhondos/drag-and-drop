@@ -1,0 +1,115 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+
+    box-sizing: border-box;
+}
+
+/* Estilos para el canvas que ocupa toda la pantalla */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+main {
+    position: relative;
+    height: 100%;
+
+    .canvas-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        max-width: 1440px;
+        height: 100%;
+        margin-inline: auto;
+        gap: 30px;
+
+        section {
+            height: 100%;
+            background-color: aliceblue;
+
+            h2 {
+                text-align: center;
+                margin-top: 32px;
+                font-size: 30px;
+            }
+        }
+    }
+
+    #miCanvas {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+
+        /* Estilos para la ventana flotante */
+        .ventana {
+            display: flex;
+            flex-flow: column nowrap;
+
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+            resize: both;
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                background-color: #007bff;
+                color: white;
+                cursor: default;
+
+                * {
+                    user-select: none;
+                }
+                >*:not(.close-button) {
+                    margin: 10px;
+                }
+
+                .close-button {                    
+                    align-self: stretch;
+                    width: 20px;
+                    padding: 10px;
+                    
+                    .close-icon {
+                        width: 100%;
+                        height: 100%;
+                    
+                        mask: url(./public/x-symbol.svg);
+                        mask-size: contain;
+                        mask-repeat: no-repeat;
+                        mask-position: right;
+                        background-color: white;
+                    }
+                }
+                .close-button:hover {
+                    background-color: blue;
+                }
+            }
+
+            .contenido {
+                display: contents;
+
+                >p {
+                    flex-grow: 1;
+                    padding: 10px;
+                }
+                >p:focus-visible {
+                    outline: 0;
+                }
+            }
+        }
+    }
+}
